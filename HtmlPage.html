@@ -1,0 +1,90 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+    <meta charset="utf-8" />
+    <style>
+        canvas {
+            position: absolute;
+            height: 320px;
+            width: 320px;
+            background-image: url('nova roda.png');
+            margin-top: 100px;
+            margin-left: 400px;
+        }
+    </style>
+    <style>
+        canvas1 {
+            position: absolute;
+            height: 52px;
+            width: 55px;
+            background-image: url('agulha.png');
+            margin-top: 65px;
+            margin-left: 530px;
+            transform: translateX(95%);
+        }
+    </style>
+</head>
+<body>
+    <input id="Button1" type="button" style="margin-top:440px; margin-left:510px; position:absolute" onclick="gatilho()"  value="Rode e Ganhe " />
+    <canvas id="MeuCanvas" >Seu Browser é um coco</canvas>
+    <canvas1 id="MeuCanvas1">  </canvas1>
+    <script>
+        var frame  = 0;
+        var orelha = 1;
+        var sorte = Math.random() * 20;
+        var azar = Math.random() * 18;
+        MeuCanvas1.style.transform = 'rotate(10deg)';
+        MeuCanvas1.style.transform = 'rotate(-10deg)';
+
+        function gatilho() {
+                 inicio = true;
+                 frame = 0;
+                 var interval = setInterval(function () {
+                 frame = frame + 22;
+                 MeuCanvas1.style.transform = 'rotate(10deg)';
+                 orelha++;
+                 roda();}, 120);
+
+        }
+
+        function roda() {
+            //var graus = Math.random() * 1000;
+            MeuCanvas.style.transform = 'rotate(' + frame + 'deg)';
+
+            if (orelha == 4 || orelha == 6 || orelha == 8 || orelha == 10 || orelha == 12 || orelha == 14 || orelha == 16 || orelha == 18)
+                MeuCanvas1.style.transform = 'rotate(-10deg)';
+
+            if (orelha >= 18) {
+                orelha = 3;
+                frame = frame+30;
+            }
+
+            if (Math.round(azar) == Math.round(sorte)) {
+                if (orelha < 6)
+                    alert('NO-LUCK, LAMENTO');
+                if (orelha < 8 && orelha>5)
+                    alert('PARABENS VC GANHOU 100% DE DESCONTO');
+                if (orelha < 10 && orelha > 7)
+                    alert('OW! TENTE NOVAMENTE');
+                if (orelha <12 && orelha >9)
+                    alert('NOP, NÃO FOI DESTA VEZ');
+                if (orelha < 14 && orelha > 11)
+                    alert('ALMOST! UUUU, PASSOU RAPANDO');
+                if (orelha < 16 && orelha > 13)
+                    alert('PARABENS VC GANHOU 50% DE DESCONTO');
+                if (orelha < 18 && orelha > 15)
+                    alert('POTS, DESSA VEZ FICO TE DEVENDO');
+                if (orelha > 17)
+                    alert('TALVEZ NA PROXIMA!');
+                document.location.reload();
+                frame = 0;
+                orelha = 1;
+            }
+            sorte = Math.random() * 20;
+        }
+        
+    </script>
+
+</body>
+</html>
